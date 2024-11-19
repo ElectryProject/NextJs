@@ -4,11 +4,8 @@ import React, { useState } from "react";
 import laura from '../../images/laura.png'
 import gabriela from '../../images/gabriela.png'
 import gustavo from '../../images/gustavo.png'
-import logo from '../../images/logo (2).png'
-import dinheiro from '../../images/moedas.png'
 import setinha from '../../images/setinha.png'
 import seta from '../../images/seta.png'
-import Header from "./components/Header";
 import Link from "next/link";
  
 const IntegrantesPage: React.FC = () => {
@@ -49,8 +46,8 @@ const IntegrantesPage: React.FC = () => {
     ];
  
     return (
-        <div className="min-h-screen bg-yellow-100 flex flex-col font-lato text-black">
-            <Header/>
+        <div className="min-h-screen bg-yellow-100 gap-8 flex flex-col font-lato text-black">
+            <h1 className="text-3xl font-bold text-center flex justify-center mt-8">Integrantes</h1>
  
             <main className="p-8 flex-1">
                 <section className="grid grid-cols-1 md:grid-cols-3 gap-8">
