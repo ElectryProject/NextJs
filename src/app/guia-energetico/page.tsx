@@ -56,7 +56,7 @@ export default function GuiaEnergetico(){
             </div>
 
             <div className="max-w-4xl mx-auto pb-20 mt-10">
-                <h2 className="text-center text-xl font-bold mb-4">Confira a lista de pontos a serem <strong className="text-[#E5B43B]">acumulados</strong></h2>
+                <h2 className="text-center text-2xl font-bold mb-4">Confira a lista de pontos a serem <strong className="text-[#E5B43B]">acumulados</strong></h2>
                 <table className="table-auto w-full border-collapse border border-yellow-400 text-left shadow-md">
                     <thead>
                         <tr className="bg-[#E5B43B]">

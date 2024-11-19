@@ -12,7 +12,7 @@ export default function SectionInform(){
                 O que <span>fazemos?</span>
             </Title>
             <SectionContainer >
-                <Feature offsetX='0%'>
+                <Feature>
                     <Image src={iconColeta} alt="ícone coleta"/>
                     <FeatureContent>
                         <h3>Coleta Inteligente</h3>
@@ -21,7 +21,7 @@ export default function SectionInform(){
                             levar seu lixo eletrônico.</p>
                     </FeatureContent>
                 </Feature>
-                <Feature offsetX='10%'>
+                <Feature>
                     <Image src={iconRecompensa} alt="ícone recompensa" />
                     <FeatureContent>
                         <h3>Recompensa</h3>
@@ -30,7 +30,7 @@ export default function SectionInform(){
                             sua casa!</p>
                     </FeatureContent>
                 </Feature>
-                <Feature offsetX='20%'>
+                <Feature>
                     <Image src={iconEnergia} alt="ícone energia"/>
                     <FeatureContent>
                         <h3>Energia Sustentável</h3>

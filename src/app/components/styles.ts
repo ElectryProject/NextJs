@@ -122,7 +122,6 @@ export const Feature = styled.div<{ offsetX: string }>`
   display: flex;
   align-items: center;
   gap: 1rem;
-  transform: translateX(${(props) => props.offsetX}); /* Posiciona na diagonal */
 `;
 
 
