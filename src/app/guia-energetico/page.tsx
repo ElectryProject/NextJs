@@ -1,7 +1,7 @@
 "use client"
 import seta from '../../images/seta.png'
 import { useUser } from "@/context";
-import Header from "../components/Header"
+import Header from "./components/Header"
 import Link from "next/link";
 import Image from "next/image";
 import totem from '../../images/totem.png'
