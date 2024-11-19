@@ -13,7 +13,7 @@ export default function GuiaEnergetico(){
 
     return(
         <main className="h-full w-full">
-            <Header/>
+            <Header />
             <article className="flex justify-center flex-col items-center gap-10 mb-5 p-20">
                 <h1 className="text-2xl font-bold">Olá, {name || "Visitante"}!</h1>
                 <p className="font-bold">
