@@ -1,11 +1,16 @@
 import Link from "next/link";
+import Banner from "./components/Banner";
+import SectionInform from "./components/SectionInform";
+import SectionParcerias from "./components/SectionMapa";
+import SectionMapa from "./components/SectionMapa";
 
 
 export default function Home() {
   return (
-      <div className="flex-col">
-        <Link href={'/login'}>Login</Link>
-        <Link href={'/cadastro'}>Cadastro</Link>
-      </div>
+      <main>
+        <Banner/>
+        <SectionInform/>
+        <SectionMapa/>
+      </main>
   );
 }
