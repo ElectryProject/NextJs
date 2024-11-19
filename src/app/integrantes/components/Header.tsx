@@ -1,8 +1,9 @@
 import Image from "next/image";
-import { HeaderContainer, NavLinks, PointsButton } from "./styles";
+
 import logo from '../../../images/logo (2).png'
 import moeda from '../../../images/moedas.png'
 import Link from "next/link";
+import { HeaderContainer, NavLinks, PointsButton } from "./styles";
 
 
 
