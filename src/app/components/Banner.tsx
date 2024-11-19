@@ -2,15 +2,45 @@
 import Image from 'next/image';
 import logo from '../../images/logo-white.png';
 import sol from '../../images/sol.jpg';
-import { Header, Main, Section, Text } from './styles';
+import menu from '../../images/icon-menu.png'
+import cadastro from '../../images/cadastro (2).png'
+import login from '../../images/login (2).png'
+import { Backdrop, Dropdown, Header, Main, Section, Text } from './styles';
+import { useState } from 'react';
+import Link from 'next/link';
+
 
 
 export default function Banner() {
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+    const toggleMenu = () => {
+        setIsMenuOpen((prev) => !prev);
+    };
+
+    const closeMenu = () => {
+        setIsMenuOpen(false);
+    };
+
     return (
         <Main>
-            <Header>
-                <Image src={logo} alt='Logo'/>
-            </Header>
+            {isMenuOpen && <Backdrop onClick={closeMenu} />} {/* Fecha ao clicar fora */}
+            <div className="header-wrapper">
+                {isMenuOpen && (
+                    <Dropdown>
+                        <ul>
+                            <li className='flex flex-col justify-center gap-2'><Image src={login} alt='ícone login'width={80}/><Link href={'/login'}>Login</Link></li>
+                            <li className='flex flex-col justify-center items-center'><Image className='ml-2' src={cadastro} alt='ícone cadastro' width={50}/><Link href={'/cadastro'}>Cadastro</Link></li>
+                        </ul>
+                    </Dropdown>
+                )}
+                <Header>
+                    <div className="menu-container" onClick={toggleMenu}>
+                        <Image src={menu} alt="Menu" width={50}/>
+                    </div>
+                    <Image src={logo} alt="Logo" className="logo" />
+                </Header>
+            </div>
             <Section>
                 <Text>
                     <h1 className='text-3xl font-bold'>Conheça a verdadeira energia que move o Planeta</h1>

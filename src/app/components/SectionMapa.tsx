@@ -9,10 +9,10 @@ export default function SectionMapa(){
             <SectionPage>
                 <DivText>
                     <h1 className='font-bold text-[2rem]'>Encontre Pontos de Coleta Próximos!</h1>
-                    <p>Para facilitar o descarte de eletrônicos e eletrodomésticos, criamos pontos de coleta pela cidade</p>
-                    <p>Contribua para um futuro sustentável e ganhe recompensas ao descartar de forma consciente.</p>
+                    <p className='text-[18px]'>Para facilitar o descarte de eletrônicos e eletrodomésticos, criamos pontos de coleta pela cidade</p>
+                    <p className='text-[18px]'>Contribua para um futuro sustentável e ganhe recompensas ao descartar de forma consciente.</p>
                 </DivText>
-                <div>
+                <div className='mt-8'>
                     <Image src={celular} alt='celular com mapa' height={500}/>
                 </div>
             </SectionPage>
