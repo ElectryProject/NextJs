@@ -9,26 +9,67 @@ import { useRouter } from "next/navigation";
 
 export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
-  const { setName } = useUser(); 
-  const [inputName, setInputName] = useState(""); 
-  const [error, setError] = useState(""); 
+  const { setName } = useUser(); // Contexto do usuário
+  const [inputName, setInputName] = useState(""); // Nome do usuário
+  const [inputPassword, setInputPassword] = useState(""); // Senha do usuário
+  const [error, setError] = useState(""); // Mensagens de erro
+  const [success, setSuccess] = useState(""); // Mensagens de sucesso
   const router = useRouter();
 
-  
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setError(""); // Limpa erros anteriores
+    setSuccess(""); // Limpa mensagens de sucesso anteriores
 
-    if (!inputName) {
-      setError("Por favor, insira um nome.");
+    if (!inputName || !inputPassword) {
+      setError("Por favor, insira um nome e uma senha.");
       return;
     }
 
-    
-    setName(inputName);
-    localStorage.setItem("userName", inputName); 
+    try {
+      // Passo 1: Verificar login
+      const verifyResponse = await fetch(
+        `http://localhost:8080/Java_Electry2_war/api/usuario/verificar?nome=${inputName}&senha=${inputPassword}`,
+        {
+          method: "GET",
+          headers: { "Content-Type": "application/json" },
+        }
+      );
 
-    
-    router.push("/guia-energetico");
+      if (!verifyResponse.ok) {
+        const verifyError = await verifyResponse.json();
+        setError(verifyError.mensagem || "Erro ao realizar login.");
+        return;
+      }
+
+      // Login bem-sucedido
+      setName(inputName); // Salva o nome no contexto do usuário
+      localStorage.setItem("userName", inputName); // Salva o nome no localStorage
+
+      // Passo 2: Armazenar dados de login
+      const storeResponse = await fetch(
+        "http://localhost:8080/Java_Electry2_war/api/login",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ username: inputName, senha: inputPassword }),
+        }
+      );
+
+      if (!storeResponse.ok) {
+        setError("Erro ao salvar os dados de login.");
+        return;
+      }
+
+      // Exibe mensagem de sucesso e redireciona após alguns segundos
+      setSuccess("Login realizado com sucesso! Redirecionando...");
+      setTimeout(() => {
+        router.push("/guia-energetico");
+      }, 3000); // 3 segundos
+    } catch (err) {
+      console.error("Erro durante a comunicação com o servidor:", err);
+      setError("Erro ao se comunicar com o servidor.");
+    }
   };
 
   return (
@@ -47,6 +88,8 @@ export default function Login() {
             className="p-4 border border-[#333] rounded-md text-base bg-[#E5B43B] text-black"
             type={showPassword ? "text" : "password"}
             placeholder="Senha"
+            value={inputPassword}
+            onChange={(e) => setInputPassword(e.target.value)}
           />
           <CheckboxContainer>
             <input
@@ -57,6 +100,7 @@ export default function Login() {
             <label htmlFor="showPassword">Mostrar senha?</label>
           </CheckboxContainer>
           {error && <p style={{ color: "red" }}>{error}</p>}
+          {success && <p style={{ color: "green" }}>{success}</p>}
           <Button type="submit">Entrar</Button>
         </form>
       </LoginContainer>
