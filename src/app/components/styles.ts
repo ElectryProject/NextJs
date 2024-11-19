@@ -191,7 +191,7 @@ export const Container = styled.section`
   display: flex;
   justify-content: space-between;
   background-color: #E5B43B;
-  padding: 2rem;
+  padding: 3rem;
   margin-top: 200px;
   gap: 3rem;
 `;
@@ -200,7 +200,7 @@ export const LeftPanel = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  max-width: 30%; /* Limita o painel esquerdo */
+  width: 30%; /* Limita o painel esquerdo */
 `;
 
 export const TitleDuvida = styled.h1`
@@ -231,7 +231,7 @@ export const Form = styled.form`
   gap: 1rem;
   width: 60%; 
   margin-top: 80px;
-  margin-left: 2rem;
+  margin-left: 15px;
   
 `;
 
@@ -241,6 +241,7 @@ export const Input = styled.input`
   width: 700px;
   border: 1px solid #ccc;
   border-radius: 4px;
+  margin-left: 155px;
 
  
 `;
@@ -252,6 +253,7 @@ export const Textarea = styled.textarea`
   border-radius: 4px;
   width: 700px;
   resize: none;
+  margin-left: 155px;
 
 
 `;
@@ -265,7 +267,7 @@ export const SubmitButton = styled.button`
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  margin-left: 300px;
+  margin-left: 705px;
   margin-top: 15px;
  
 `;
