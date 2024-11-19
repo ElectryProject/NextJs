@@ -26,10 +26,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-      <UserProvider>{children}</UserProvider>  
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        {/* Colocar UserProvider diretamente ao redor dos children */}
+        <UserProvider>
+          {children}
+        </UserProvider>
       </body>
     </html>
   );

@@ -1,37 +1,47 @@
 "use client"
-import { createContext, ReactNode, useContext, useState, useEffect } from "react";
+import React, { createContext, useContext, useEffect, useState } from 'react';
 
-type UserContextType = {
-    name: string;
-    setName: (name: string) => void;
-};
+// Definir o tipo do contexto
+interface UserContextType {
+  name: string;
+  setName: React.Dispatch<React.SetStateAction<string>>;
+}
 
+// Criar o contexto
 const UserContext = createContext<UserContextType | undefined>(undefined);
 
-export const UserProvider = ({ children }: { children: ReactNode }) => {
-    // Inicialize o estado com o valor de localStorage, se presente
-    const [name, setName] = useState<string>(() => {
-        return localStorage.getItem("userName") || ""; // Se não houver nome, use uma string vazia
-    });
+// UserProvider para envolver a aplicação
+export const UserProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const [name, setName] = useState<string>('');
+  const [loading, setLoading] = useState<boolean>(true);
 
-    // Atualize o localStorage sempre que o nome mudar
-    useEffect(() => {
-        if (name) {
-            localStorage.setItem("userName", name);
-        }
-    }, [name]);
+  useEffect(() => {
+    // Acessar localStorage apenas no cliente
+    if (typeof window !== 'undefined') {
+      const storedName = localStorage.getItem('userName');
+      if (storedName) {
+        setName(storedName);
+      }
+      setLoading(false); // Finaliza o carregamento quando os dados estiverem prontos
+    }
+  }, []);
 
-    return (
-        <UserContext.Provider value={{ name, setName }}>
-            {children}
-        </UserContext.Provider>
-    );
+  if (loading) {
+    return <div>Loading...</div>; // Evitar renderização antes do carregamento
+  }
+
+  return (
+    <UserContext.Provider value={{ name, setName }}>
+      {children}
+    </UserContext.Provider>
+  );
 };
 
-export const useUser = () => {
-    const context = useContext(UserContext);
-    if (!context) {
-        throw new Error("useUser must be used within a UserProvider");
-    }
-    return context;
+// Hook para acessar o contexto em qualquer componente
+export const useUser = (): UserContextType => {
+  const context = useContext(UserContext);
+  if (!context) {
+    throw new Error('useUser must be used within a UserProvider');
+  }
+  return context;
 };
