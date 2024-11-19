@@ -1,5 +1,5 @@
-"use client"
-import React, { createContext, useContext, useEffect, useState } from 'react';
+"use client";
+import React, { createContext, useContext, useEffect, useState } from "react";
 
 // Definir o tipo do contexto
 interface UserContextType {
@@ -11,23 +11,32 @@ interface UserContextType {
 const UserContext = createContext<UserContextType | undefined>(undefined);
 
 // UserProvider para envolver a aplicação
-export const UserProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [name, setName] = useState<string>('');
+export const UserProvider: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
+  const [name, setName] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(true);
 
+  // Carregar o nome do localStorage ao iniciar
   useEffect(() => {
-    // Acessar localStorage apenas no cliente
-    if (typeof window !== 'undefined') {
-      const storedName = localStorage.getItem('userName');
+    if (typeof window !== "undefined") {
+      const storedName = localStorage.getItem("userName");
       if (storedName) {
         setName(storedName);
       }
-      setLoading(false); // Finaliza o carregamento quando os dados estiverem prontos
+      setLoading(false);
     }
   }, []);
 
+  // Atualizar o localStorage sempre que o nome mudar
+  useEffect(() => {
+    if (typeof window !== "undefined" && name) {
+      localStorage.setItem("userName", name);
+    }
+  }, [name]);
+
   if (loading) {
-    return <div>Loading...</div>; // Evitar renderização antes do carregamento
+    return <div>Loading...</div>;
   }
 
   return (
@@ -41,7 +50,7 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({ children
 export const useUser = (): UserContextType => {
   const context = useContext(UserContext);
   if (!context) {
-    throw new Error('useUser must be used within a UserProvider');
+    throw new Error("useUser must be used within a UserProvider");
   }
   return context;
 };
