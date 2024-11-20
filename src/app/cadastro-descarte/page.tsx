@@ -165,7 +165,7 @@ const Page: React.FC = () => {
       </div>
 
       <footer className="fixed bottom-5 left-5 w-1/5">
-        <Link href={"/"}>
+        <Link href={"/guia-energetico"}>
           <Image className="w-7" src={seta} alt="Botão de Voltar" />
         </Link>
       </footer>
