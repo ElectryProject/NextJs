@@ -9,7 +9,7 @@ import { useRouter } from "next/navigation";
 
 export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
-  const { setName } = useUser(); // Contexto do usuário
+  const { setName, setToken } = useUser(); // Contexto do usuário
   const [inputName, setInputName] = useState(""); // Nome do usuário
   const [inputPassword, setInputPassword] = useState(""); // Senha do usuário
   const [error, setError] = useState(""); // Mensagens de erro
@@ -42,12 +42,8 @@ export default function Login() {
         return;
       }
 
-      // Login bem-sucedido
-      setName(inputName); // Salva o nome no contexto do usuário
-      localStorage.setItem("userName", inputName); // Salva o nome no localStorage
-
-      // Passo 2: Armazenar dados de login
-      const storeResponse = await fetch(
+      // Passo 2: Armazenar token de login
+      const tokenResponse = await fetch(
         "http://localhost:8080/Java_Electry2_war/api/login",
         {
           method: "POST",
@@ -56,10 +52,18 @@ export default function Login() {
         }
       );
 
-      if (!storeResponse.ok) {
-        setError("Erro ao salvar os dados de login.");
+      if (!tokenResponse.ok) {
+        setError("Erro ao gerar o token de login.");
         return;
       }
+
+      const { token } = await tokenResponse.json();
+
+      // Salva informações no contexto e localStorage
+      setName(inputName);
+      setToken(token); // Atualiza o contexto com o token
+      localStorage.setItem("userName", inputName);
+      localStorage.setItem("userToken", token);
 
       // Exibe mensagem de sucesso e redireciona após alguns segundos
       setSuccess("Login realizado com sucesso! Redirecionando...");

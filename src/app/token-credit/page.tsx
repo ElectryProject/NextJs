@@ -1,63 +1,82 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import { useUser } from "@/context";
 import { useRouter } from "next/navigation";
-import perigo from "../../images/warning.png";
+import Header from "./components/Header";
 import Image from "next/image";
-import seta from "../../images/seta.png";
-import Header from "../guia-energetico/components/Header";
 import Link from "next/link";
+import perigo from "../../images/warning.png";
+import seta from "../../images/seta.png";
 
-export default function GerarToken() {
+//API Python com Flask para gerar o Token
+const API_FLASK_URL = "http://localhost:5000/gerar-token";
+//API RestFul Java para armazenar
+const API_JAVA_URL = "http://localhost:8080/Java_Electry2_war/api/token";
+
+export default function TokenPage() {
+  const { name, token: userToken, setToken } = useUser(); 
+  const [token, setTokenState] = useState<string | null>(null);
   const router = useRouter();
-  const [token, setToken] = useState<string | null>(null);
-  const [error, setError] = useState<string | null>(null);
-  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    const gerarToken = async () => {
-      try {
-        const nome = localStorage.getItem("userName"); // Obtém o nome armazenado
-        if (!nome) {
-          setError("Usuário não encontrado. Faça login para continuar.");
-          setLoading(false);
-          setTimeout(() => router.push("/login"), 3000); // Redireciona para login após 3 segundos
-          return;
-        }
+    if (!name) {
+      router.push("/login"); 
+      return;
+    }
 
-        // Verifica se já existe um token no localStorage
-        const storedToken = localStorage.getItem("userToken");
-        if (storedToken) {
-          setToken(storedToken);
-          setLoading(false);
-          return;
-        }
+    // Verifica se o token já existe
+    const storedToken = userToken || localStorage.getItem("userToken");
+    if (storedToken) {
+      setTokenState(storedToken);
+    } else {
+      // Solicita um novo token da API Flask
+      fetch(API_FLASK_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ nome: name }),
+      })
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Erro ao gerar o token");
+          }
+          return response.json();
+        })
+        .then((data) => {
+          const newToken = data.token;
+          setToken(newToken); 
+          localStorage.setItem("userToken", newToken); 
+          setTokenState(newToken); 
 
-        // Caso contrário, gera um novo token
-        const response = await fetch("http://127.0.0.1:5000/gerar-token", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ nome: nome }),
+          
+          fetch(API_JAVA_URL, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ codigoToken: newToken }),
+          })
+            .then((response) => {
+              if (!response.ok) {
+                throw new Error("Erro ao armazenar o token na API Java");
+              }
+              return response.json();
+            })
+            .then((data) => {
+              console.log("Token armazenado com sucesso na API Java:", data);
+            })
+            .catch((error) => {
+              console.error("Erro ao armazenar o token na API Java:", error);
+            });
+        })
+        .catch((error) => {
+          console.error("Erro:", error);
         });
+    }
+  }, [name, userToken, setToken, router]);
 
-        if (!response.ok) {
-          throw new Error("Erro ao gerar o token.");
-        }
-
-        const data = await response.json();
-        setToken(data.token); // Define o token no estado
-        localStorage.setItem("userToken", data.token); // Salva o token no localStorage
-      } catch (error) {
-        console.error("Erro ao gerar o token:", error);
-        setError("Erro ao gerar o token. Por favor, tente novamente.");
-      } finally {
-        setLoading(false); // Sempre para o carregamento, independentemente de sucesso ou erro
-      }
-    };
-
-    gerarToken();
-  }, [router]);
+  if (!name) return null;
 
   return (
     <main>
@@ -69,18 +88,14 @@ export default function GerarToken() {
         <div className="flex justify-center">
           <Image src={perigo} alt="símbolo de perigo" />
         </div>
-        {loading && <p>Gerando token...</p>}
-        {error && <p style={{ color: "red" }}>{error}</p>}
-        {token && !loading && (
-          <div className="gap-5 flex flex-col justify-center">
-            <p className="text-xl">
-              <strong>Código de Acesso:</strong>
-            </p>
-            <div className="border-2 mx-auto max-w-sm border-gray-300 bg-[#F0ECE4] p-7 rounded-md">
-              <p className="font-bold text-2xl">{token}</p>
-            </div>
+        <div className="gap-5 flex flex-col justify-center">
+          <p className="text-xl">
+            <strong>Código de Acesso:</strong>
+          </p>
+          <div className="border-2 mx-auto max-w-sm border-gray-300 bg-[#F0ECE4] p-7 rounded-md">
+            <p className="font-bold text-2xl">{token || "Carregando..."}</p>
           </div>
-        )}
+        </div>
       </div>
       <footer className="fixed bottom-5 left-5 w-1/5">
         <Link href={"/"}>

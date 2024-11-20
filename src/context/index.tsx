@@ -2,9 +2,11 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 
 // Definir o tipo do contexto
-interface UserContextType {
+export interface UserContextType {
   name: string;
-  setName: React.Dispatch<React.SetStateAction<string>>;
+  setName: (name: string) => void;
+  token: string | null;
+  setToken: (token: string | null) => void;
 }
 
 // Criar o contexto
@@ -15,14 +17,19 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
   const [name, setName] = useState<string>("");
+  const [token, setToken] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
 
-  // Carregar o nome do localStorage ao iniciar
+  // Carregar o nome e o token do localStorage ao iniciar
   useEffect(() => {
     if (typeof window !== "undefined") {
       const storedName = localStorage.getItem("userName");
+      const storedToken = localStorage.getItem("userToken");
       if (storedName) {
         setName(storedName);
+      }
+      if (storedToken) {
+        setToken(storedToken);
       }
       setLoading(false);
     }
@@ -35,12 +42,23 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({
     }
   }, [name]);
 
+  // Atualizar o localStorage sempre que o token mudar
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      if (token) {
+        localStorage.setItem("userToken", token);
+      } else {
+        localStorage.removeItem("userToken"); // Remover se o token for null
+      }
+    }
+  }, [token]);
+
   if (loading) {
     return <div>Loading...</div>;
   }
 
   return (
-    <UserContext.Provider value={{ name, setName }}>
+    <UserContext.Provider value={{ name, setName, token, setToken }}>
       {children}
     </UserContext.Provider>
   );
