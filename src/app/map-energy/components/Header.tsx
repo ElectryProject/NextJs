@@ -15,10 +15,11 @@ export default function Header(){
         <HeaderContainer>
             <Image src={logo} alt='Logo Electry' height={30}/>
             <NavLinks>
-                <li><Link href={'/map-energy'}>MapEnergy</Link></li>
-                <li><Link href={'/token-credit'}>Token Credit</Link></li>
-                <li><Link href={'/loja-energia'}>Loja de Energia</Link></li>
-                <li><Link href={'/integrantes'}>Sobre Nós</Link></li>
+                <li><Link className="hover:underline" href={'/guia-energetico'}>Guia Energético</Link></li>
+                <li><Link className="hover:underline" href={'/map-energy'}>MapEnergy</Link></li>
+                <li><Link className="hover:underline" href={'/token-credit'}>Token Credit</Link></li>
+                <li><Link className="hover:underline" href={'/loja-energia'}>Loja de Energia</Link></li>
+                <li><Link className="hover:underline" href={'/integrantes'}>Sobre Nós</Link></li>
             </NavLinks>
             <PointsButton>
                 10 pontos

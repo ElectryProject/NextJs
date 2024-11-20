@@ -11,7 +11,7 @@ export default function SectionDuvidas() {
   const [email, setEmail] = useState("");
   const [assunto, setAssunto] = useState("");
   const [mensagem, setMensagem] = useState("");
-  const [sucesso, setSucesso] = useState(""); // Novo estado para a mensagem de sucesso
+  
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -33,17 +33,16 @@ export default function SectionDuvidas() {
       });
 
       if (response.ok) {
-        setSucesso("Dúvida cadastrada com sucesso!"); // Define a mensagem de sucesso
+        alert("Dúvida cadastrada com sucesso!"); // Define a mensagem de sucesso
         setNome("");
         setEmail("");
         setAssunto("");
         setMensagem("");
       } else {
-        setSucesso("Erro ao enviar a dúvida. Tente novamente.");
+        alert("Erro ao enviar a Dúvida, tente novamente!")
       }
     } catch (error) {
       console.error('Erro ao conectar com o servidor: ', error);
-      setSucesso("Erro ao enviar a dúvida. Tente novamente.");
     }
   };
 
@@ -90,12 +89,6 @@ export default function SectionDuvidas() {
             Enviar
           </button>
         </form>
-
-        
-        {sucesso && (
-          <div className="mt-4 text-center text-green-600">
-          </div>
-        )}
       </div>
     </Container>
   );

@@ -15,8 +15,8 @@ import cooler from '../../images/cooler-solar.png'
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import Header from "../guia-energetico/components/Header";
 import Link from "next/link";
+import Header from "./components/Header";
  
 const Page: React.FC = () => {
     const produtos = [

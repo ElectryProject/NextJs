@@ -1,7 +1,7 @@
 "use client";
 import seta from "../../images/seta.png";
 import React, { useState } from "react";
-import { Button, CheckboxContainer, Footer, LoginContainer, Main, Title } from "./styles";
+import { Button, CheckboxContainer, Footer, LoginContainer, Main, Title, Banner } from "./styles";
 import Image from "next/image";
 import Link from "next/link";
 import { useUser } from "@/context";
@@ -74,6 +74,11 @@ export default function Login() {
 
   return (
     <Main>
+      {success && (
+        <Banner>
+          <p>{success}</p>
+        </Banner>
+      )}
       <LoginContainer>
         <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
           <Title>Login</Title>
@@ -100,7 +105,6 @@ export default function Login() {
             <label htmlFor="showPassword">Mostrar senha?</label>
           </CheckboxContainer>
           {error && <p style={{ color: "red" }}>{error}</p>}
-          {success && <p style={{ color: "green" }}>{success}</p>}
           <Button type="submit">Entrar</Button>
         </form>
       </LoginContainer>
