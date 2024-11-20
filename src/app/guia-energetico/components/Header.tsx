@@ -13,6 +13,7 @@ export default function Header(){
         <HeaderContainer>
             <Image src={logo} alt='Logo Electry' height={30}/>
             <NavLinks>
+                <li><Link className="hover:underline" href={'/guia-energetico'}>Guia Energético</Link></li>
                 <li><Link className="hover:underline" href={'/map-energy'}>MapEnergy</Link></li>
                 <li><Link className="hover:underline" href={'/token-credit'}>Token Credit</Link></li>
                 <li><Link className="hover:underline" href={'/loja-energia'}>Loja de Energia</Link></li>

@@ -56,3 +56,28 @@ export const Image = styled.image`
 
 `
 
+export const Banner = styled.div`
+  width: 100%;
+  padding: 1rem;
+  background-color: #4caf50;
+  color: white;
+  text-align: center;
+  font-weight: bold;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  animation: fadeIn 0.5s ease;
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-20%);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+`;
+

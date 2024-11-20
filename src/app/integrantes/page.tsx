@@ -23,7 +23,7 @@ const IntegrantesPage: React.FC = () => {
             nome: "Gabriela De Sousa Reis",
             imagem: gabriela.src,
             rm: "558830",
-            curso: "1TDSPJ",
+            turma: "1TDSPJ",
             github: "https://github.com/gabisreis7",
             linkedin: "https://www.linkedin.com/in/gabriela-de-sousa-reis-00935b237/",
         },
@@ -31,7 +31,7 @@ const IntegrantesPage: React.FC = () => {
             nome: "Laura Amadeu",
             imagem: laura.src,
             rm: "556690",
-            curso: "1TDSPJ",
+            turma: "1TDSPJ",
             github: "https://github.com/lauraamadeu10",
             linkedin: "https://www.linkedin.com/in/laura-amadeu-0995a22b6/",
         },
@@ -39,7 +39,7 @@ const IntegrantesPage: React.FC = () => {
             nome: "Gustavo Lazzuri",
             imagem: gustavo.src,
             rm: "556772",
-            curso: "1TDSPI",
+            turma: "1TDSPI",
             github: "https://github.com/guLazzuri",
             linkedin: "https://br.linkedin.com/in/gustavolazzuri",
         },
@@ -75,7 +75,7 @@ const IntegrantesPage: React.FC = () => {
                                         <strong>RM:</strong> {integrante.rm}
                                     </p>
                                     <p>
-                                        <strong>Curso:</strong> {integrante.curso}
+                                        <strong>Turma:</strong> {integrante.turma}
                                     </p>
                                     <div className="flex gap-4 mt-2">
                                         <a

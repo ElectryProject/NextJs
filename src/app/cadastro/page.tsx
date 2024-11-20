@@ -66,6 +66,17 @@ export default function Cadastro() {
 
   return (
     <Container>
+      <div style={{ 
+        backgroundColor: successMessage ? 'green' : errorMessage ? 'red' : 'transparent', 
+        color: 'white', 
+        textAlign: 'center', 
+        padding: '10px',
+        marginBottom: '20px',
+        borderRadius: '5px' 
+      }}>
+        {successMessage && <p>{successMessage}</p>}
+        {errorMessage && <p>{errorMessage}</p>}
+      </div>
       <Title>Cadastro</Title>
       <form onSubmit={handleSubmit} className="grid grid-cols-2 gap-5 max-w-[600px] w-full">
         <input
@@ -129,9 +140,6 @@ export default function Cadastro() {
           <button className="p-2.5 w-[229px] bg-black text-white border-0 rounded-md text-base cursor-pointer" type="submit">Cadastrar</button>
         </div>
       </form>
-
-      {successMessage && <p style={{ color: "green", textAlign: "center" }}>{successMessage}</p>}
-      {errorMessage && <p style={{ color: "red", textAlign: "center" }}>{errorMessage}</p>}
 
       <Footer>
         <Link href={"/"}>
