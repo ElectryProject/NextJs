@@ -30,7 +30,7 @@ export default function Footer() {
                     </ul>
             </div>
   
-          {/* Sobre Nós */}
+          
           <div className="text-center md:text-left ml-5">
             <h3 className="text-lg font-bold mb-2">Conheça os criadores Electry</h3>
             <ul>

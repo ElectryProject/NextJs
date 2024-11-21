@@ -17,16 +17,16 @@ export default function Cadastro() {
   const [endereco, setEndereco] = useState('');
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
-  const [successMessage, setSuccessMessage] = useState(''); // Mensagem de sucesso
-  const [errorMessage, setErrorMessage] = useState(''); // Mensagem de erro
+  const [successMessage, setSuccessMessage] = useState(''); 
+  const [errorMessage, setErrorMessage] = useState(''); 
   const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setErrorMessage(''); // Limpa qualquer mensagem de erro
-    setSuccessMessage(''); // Limpa a mensagem de sucesso anterior
+    setErrorMessage(''); 
+    setSuccessMessage(''); 
 
-    // Atualize o nome no contexto
+    
     setName(inputName);
 
     const userData = {
@@ -40,6 +40,7 @@ export default function Cadastro() {
       senha,
     };
 
+    //API JAVA para armazenar dados de usuário
     try {
       const response = await fetch(`http://localhost:8080/Java_Electry2_war/api/usuario`, {
         method: 'POST',
@@ -53,7 +54,7 @@ export default function Cadastro() {
         setSuccessMessage('Cadastro realizado com sucesso! Redirecionando...');
         setTimeout(() => {
           router.push('/guia-energetico');
-        }, 3000); // Redireciona após 3 segundos
+        }, 3000); 
       } else {
         const errorData = await response.json();
         setErrorMessage(errorData.mensagem || 'Não foi possível cadastrar o usuário.');

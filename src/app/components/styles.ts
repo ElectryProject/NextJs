@@ -118,7 +118,7 @@ export const SectionContainer = styled.div`
   position: relative;
 `;
 
-export const Feature = styled.div<{ offsetX: string }>`
+export const Feature = styled.div`
   display: flex;
   align-items: center;
   gap: 1rem;

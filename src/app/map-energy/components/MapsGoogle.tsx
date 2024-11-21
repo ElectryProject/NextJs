@@ -1,5 +1,6 @@
 "use client";
 
+//API Google My Maps
 export default function MapsGoogle() {
   return (
     <div className="mt-9 flex flex-col gap-10">

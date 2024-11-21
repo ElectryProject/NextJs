@@ -7,7 +7,7 @@ export const Container = styled.div`
   justify-content: center;
   min-height: 100vh;
   gap: 50px;
-  background-color: #E5B43B; /* Cor de fundo amarela */
+  background-color: #E5B43B; 
 `;
 
 export const Form = styled.form`
@@ -23,8 +23,8 @@ export const Input = styled.input`
   border: 1px solid #333;
   border-radius: 4px;
   font-size: 16px;
-  background-color: #E5B43B; /* Cor de fundo dos inputs */
-  color: #000; /* Cor do texto */
+  background-color: #E5B43B; 
+  color: #000; 
 `;
 
 

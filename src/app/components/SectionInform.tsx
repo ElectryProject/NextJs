@@ -1,6 +1,6 @@
 "use client"
 import Image from "next/image";
-import { Feature, FeatureContent,  PageContainer,  SectionContainer,  Title } from "./styles";
+import {Feature, FeatureContent,  PageContainer,  SectionContainer,  Title } from "./styles";
 import iconColeta from '../../images/icone-coleta.png'
 import iconRecompensa from '../../images/icone-recompensa.png'
 import iconEnergia from '../../images/icone-energia.png'

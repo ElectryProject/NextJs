@@ -35,21 +35,21 @@ export default function SectionDuvidas() {
 
       if (response.ok) {
         setSuccessMessage("Dúvida cadastrada com sucesso!");
-        setErrorMessage(""); // Limpa a mensagem de erro
+        setErrorMessage(""); 
         setNome("");
         setEmail("");
         setAssunto("");
         setMensagem("");
 
-        // Remove a mensagem de sucesso após 3 segundos
+        
         setTimeout(() => {
           setSuccessMessage("");
         }, 3000);
       } else {
         setErrorMessage("Erro ao enviar a dúvida. Tente novamente!");
-        setSuccessMessage(""); // Limpa a mensagem de sucesso
+        setSuccessMessage(""); 
 
-        // Remove a mensagem de erro após 3 segundos
+        
         setTimeout(() => {
           setErrorMessage("");
         }, 3000);
@@ -57,9 +57,9 @@ export default function SectionDuvidas() {
     } catch (error) {
       console.error('Erro ao conectar com o servidor: ', error);
       setErrorMessage("Erro ao conectar com o servidor.");
-      setSuccessMessage(""); // Limpa a mensagem de sucesso
+      setSuccessMessage(""); 
 
-      // Remove a mensagem de erro após 3 segundos
+      
       setTimeout(() => {
         setErrorMessage("");
       }, 3000);

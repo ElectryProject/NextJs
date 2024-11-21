@@ -24,6 +24,7 @@ const Page: React.FC = () => {
     const descarteData = { produto, dataDescarte: data };
     const pontoColetaData = { localizacao };
 
+    //API Java para armazenar dados de descarte
     try {
       const responseDescarte = await fetch(
         "http://localhost:8080/Java_Electry2_war/api/descarte",
@@ -41,6 +42,7 @@ const Page: React.FC = () => {
         return;
       }
 
+      //API Java para armazenar dados de descarte
       const responsePontoColeta = await fetch(
         "http://localhost:8080/Java_Electry2_war/api/pontoColeta",
         {

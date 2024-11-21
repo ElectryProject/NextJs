@@ -9,17 +9,17 @@ import { useRouter } from "next/navigation";
 
 export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
-  const { setName, setToken } = useUser(); // Contexto do usuário
-  const [inputName, setInputName] = useState(""); // Nome do usuário
-  const [inputPassword, setInputPassword] = useState(""); // Senha do usuário
-  const [error, setError] = useState(""); // Mensagens de erro
-  const [success, setSuccess] = useState(""); // Mensagens de sucesso
+  const { setName, setToken } = useUser(); 
+  const [inputName, setInputName] = useState(""); 
+  const [inputPassword, setInputPassword] = useState(""); 
+  const [error, setError] = useState(""); 
+  const [success, setSuccess] = useState(""); 
   const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setError(""); // Limpa erros anteriores
-    setSuccess(""); // Limpa mensagens de sucesso anteriores
+    setError(""); 
+    setSuccess(""); 
 
     if (!inputName || !inputPassword) {
       setError("Por favor, insira um nome e uma senha.");
@@ -59,13 +59,13 @@ export default function Login() {
 
       const { token } = await tokenResponse.json();
 
-      // Salva informações no contexto e localStorage
+      
       setName(inputName);
-      setToken(token); // Atualiza o contexto com o token
+      setToken(token); 
       localStorage.setItem("userName", inputName);
       localStorage.setItem("userToken", token);
 
-      // Exibe mensagem de sucesso e redireciona após alguns segundos
+     
       setSuccess("Login realizado com sucesso! Redirecionando...");
       setTimeout(() => {
         router.push("/guia-energetico");
