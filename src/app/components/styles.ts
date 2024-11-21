@@ -6,7 +6,6 @@ export const Main = styled.main`
     align-items: center;
     height: 100vh;
 `;
-
 export const Header = styled.header`
     display: flex;
     align-items: center;
@@ -19,23 +18,39 @@ export const Header = styled.header`
 
     .menu-container {
         cursor: pointer;
+        display: block;
     }
 
     .logo {
-        margin: 0 auto; /* Centraliza a logo no Header */
+        margin: 0 auto;
+        width: 180px;  // Tamanho ajustado para a logo
+        max-width: 200px;  // Máximo tamanho para evitar excessos
+    }
+
+    @media (max-width: 992px) {
+        .menu-container {
+            display: block;
+        }
+
+        .logo {
+            width: 100px;  // Logo menor em telas pequenas
+        }
     }
 `;
 
+
+
+
+
 export const Dropdown = styled.div`
     position: absolute;
-    top: 0; /* Começa no topo da página */
+    top: 0;
     left: 0;
     width: 100%;
-    height: 20%;
     background-color: #000;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    border-radius: 0 0 8px 8px; /* Apenas as bordas inferiores são arredondadas */
-    padding: 0.5rem 0; /* Espaçamento menor */
+    border-radius: 0 0 8px 8px;
+    padding: 0.5rem 0;
     z-index: 20;
 
     ul {
@@ -43,21 +58,26 @@ export const Dropdown = styled.div`
         padding: 0;
         margin: 0;
         text-align: center;
-        width: 100px;
         display: flex;
+        flex-direction: column; /* Exibe os itens do menu em coluna */
         gap: 20px;
-        margin-left: 700px;
+        width: 100%;
+    }
 
-        li {
-            padding: 0.4rem 1rem; /* Botões menores */
-            font-size: 0.9rem; /* Fonte reduzida */
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-            border: 1px solid #000; /* Adiciona borda para destacar os botões */
-            border-radius: 4px; /* Bordas arredondadas */
-            margin: 0.3rem auto; /* Espaçamento vertical */
+    li {
+        padding: 0.4rem 1rem;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        border: 1px solid #000;
+        border-radius: 4px;
+        margin: 0.3rem auto;
+    }
 
-          
+    @media (max-width: 992px) {
+        ul {
+            gap: 10px;
+            width: 100%; /* O menu ocupa toda a largura em telas pequenas */
         }
     }
 `;
@@ -68,9 +88,10 @@ export const Backdrop = styled.div`
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: transparent;
+    background: rgba(0, 0, 0, 0.5); /* Fundo semi-transparente */
     z-index: 15;
 `;
+
 
 export const Section = styled.section`
     display: flex;
@@ -78,7 +99,22 @@ export const Section = styled.section`
     gap: 200px;
     margin-top: 10px;
 
-`
+    img {
+        width: 100%; /* Faz a imagem ocupar 100% da largura disponível */
+        max-width: 450px; /* Limita a largura máxima da imagem */
+        height: auto; /* Mantém a proporção da imagem */
+    }
+
+    @media (max-width: 992px) {
+        flex-direction: column;
+        gap: 30px;
+
+        img {
+            max-width: 350px; /* Ajusta a largura da imagem para telas menores */
+        }
+    }
+`;
+
 
 export const Text = styled.div`
     display: flex;
@@ -141,50 +177,151 @@ export const FeatureContent = styled.div`
   }
 `;
 
+
+
 export const PageMap = styled.main`
   background-color: #E5B43B;
   height: 80vh;
+  display: flex;
+  justify-content: center;
   align-items: center;
-
-`
+  padding: 20px;
+  flex-direction: column;
+`;
 
 export const SectionPage = styled.section`
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 250px;
-
-`
+  gap: 30px;
+  flex-wrap: wrap;
+  width: 100%;
+`;
 
 export const DivText = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 25px;
-  width: 600px;
-`
+  gap: 15px;
+  width: 100%;
+  max-width: 600px;
+  text-align: left; /* Definindo alinhamento à esquerda por padrão */
 
-export const PageParceiros = styled.main`
-  height: 80vh;
-  align-items: center;
-
-`
-
-export const DivConteud = styled.div`
-  width: 500px;
-  display: flex;
-  margin-left: 980px;
-  margin-top: 50px;
-`
-export const Conteud = styled.h1`
-  font-size: 30px;
-  font-weight: bold;
-  text-align: right;
-
-  span {
-    color: #E5B43B; 
+  h1 {
+    font-size: 2rem; /* Ajustando o tamanho do título */
   }
 
-`
+  p {
+    font-size: 18px; /* Ajustando o tamanho do texto */
+  }
+`;
+
+export const ImageWrapper = styled.div`
+  width: 100%;
+  max-width: 450px;
+  display: flex;
+  justify-content: center;
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+`;
+
+export const PageParceiros = styled.main`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Ajuste para que o conteúdo fique no topo */
+  align-items: center;
+  padding: 20px;
+
+  @media (max-width: 992px) {
+    padding: 15px;
+  }
+
+  @media (max-width: 430px) {
+    padding: 10px;
+  }
+`;
+
+export const DivConteud = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  margin-top: 50px;
+
+  @media (max-width: 992px) {
+    justify-content: center;
+    margin-top: 30px;
+  }
+
+  @media (max-width: 430px) {
+    justify-content: center;
+    margin-top: 20px;
+  }
+`;
+
+export const Conteud = styled.h1`
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: right;
+  margin-bottom: 40px; /* Ajuste na distância entre o texto e as imagens */
+
+  span {
+    color: #E5B43B;
+  }
+
+  @media (max-width: 992px) {
+    font-size: 1.8rem;
+    text-align: center;
+    margin-bottom: 30px; /* Distância ajustada no responsivo */
+  }
+
+  @media (max-width: 430px) {
+    font-size: 1.5rem;
+    text-align: center;
+    margin-bottom: 20px; /* Distância ajustada no responsivo */
+  }
+`;
+
+export const LogosContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 70px;
+  flex-wrap: wrap;
+  width: 100%;
+  margin-top: 40px;
+
+  @media (max-width: 992px) {
+    gap: 40px;
+    margin-top: 30px;
+  }
+
+  @media (max-width: 430px) {
+    gap: 20px;
+    margin-top: 20px;
+  }
+`;
+
+export const LogoImage = styled.div`
+  max-width: 220px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+  img {
+    width: 100%;
+    height: auto;
+    max-width: 220px;
+  }
+
+  @media (max-width: 430px) {
+    max-width: 120px;
+  }
+`;
+
+
+
+
 
 export const Container = styled.section`
   display: flex;
@@ -193,6 +330,18 @@ export const Container = styled.section`
   padding: 3rem;
   margin-top: 200px;
   gap: 3rem;
+
+  /* Tela média e grande (acima de 992px) - form ao lado do painel esquerdo */
+  @media (max-width: 992px) {
+    flex-direction: column; /* Formulário vai para baixo na tela pequena */
+    padding: 2rem;
+    margin-top: 100px;
+  }
+
+  @media (max-width: 430px) {
+    margin-top: 80px;
+    padding: 1rem;
+  }
 `;
 
 export const LeftPanel = styled.div`
@@ -200,6 +349,16 @@ export const LeftPanel = styled.div`
   flex-direction: column;
   gap: 1rem;
   width: 30%; /* Limita o painel esquerdo */
+
+  @media (max-width: 992px) {
+    width: 100%;
+    align-items: center;
+  }
+
+  @media (max-width: 430px) {
+    width: 100%;
+    align-items: center;
+  }
 `;
 
 export const TitleDuvida = styled.h1`
@@ -207,6 +366,16 @@ export const TitleDuvida = styled.h1`
   color: #000;
   margin-bottom: 1rem;
   font-weight: 500;
+
+  @media (max-width: 992px) {
+    font-size: 1.6rem;
+    text-align: center;
+  }
+
+  @media (max-width: 430px) {
+    font-size: 1.4rem;
+    text-align: center;
+  }
 `;
 
 export const Button = styled.button`
@@ -222,7 +391,23 @@ export const Button = styled.button`
   cursor: pointer;
   gap: 5px;
 
+  @media (max-width: 430px) {
+    font-size: 0.9rem;
+    padding: 0.7rem 0.9rem;
+  }
 `;
+
+export const FormWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  width: 70%; /* Ajuste para preencher a largura restante */
+  
+  @media (max-width: 992px) {
+    width: 100%; /* Quando a tela for pequena, o formulário ocupa toda a largura */
+  }
+`;
+
 
 export const Form = styled.form`
   display: flex;

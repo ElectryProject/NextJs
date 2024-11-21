@@ -41,7 +41,6 @@ export default function SectionDuvidas() {
         setAssunto("");
         setMensagem("");
 
-        
         setTimeout(() => {
           setSuccessMessage("");
         }, 3000);
@@ -49,7 +48,6 @@ export default function SectionDuvidas() {
         setErrorMessage("Erro ao enviar a dúvida. Tente novamente!");
         setSuccessMessage(""); 
 
-        
         setTimeout(() => {
           setErrorMessage("");
         }, 3000);
@@ -59,7 +57,6 @@ export default function SectionDuvidas() {
       setErrorMessage("Erro ao conectar com o servidor.");
       setSuccessMessage(""); 
 
-      
       setTimeout(() => {
         setErrorMessage("");
       }, 3000);
@@ -75,21 +72,21 @@ export default function SectionDuvidas() {
         <Button><Image src={iconOportunidade} alt='ícone de oportunidade' width={25} />Oportunidades Internas</Button>
       </LeftPanel>
 
-      <div className="flex flex-col items-center">
+      <div className="flex flex-col items-center w-full">
         {/* Banner de mensagens */}
         {successMessage && (
-          <div className="p-3 mb-4 w-[700px] text-center text-white bg-green-500 rounded-md">
+          <div className="p-3 mb-4 w-full md:w-[700px] text-center text-white bg-green-500 rounded-md">
             {successMessage}
           </div>
         )}
         {errorMessage && (
-          <div className="p-3 mb-4 w-[700px] text-center text-white bg-red-500 rounded-md">
+          <div className="p-3 mb-4 w-full md:w-[700px] text-center text-white bg-red-500 rounded-md">
             {errorMessage}
           </div>
         )}
 
         {/* Formulário */}
-        <form onSubmit={handleSubmit} className="flex flex-col gap-4 w-[700px] mt-20">
+        <form onSubmit={handleSubmit} className="flex flex-col gap-4 w-full md:w-[700px] mt-4 md:mt-20">
           <input
             className="p-3 text-base w-full border border-gray-300 rounded-md"
             type="text"

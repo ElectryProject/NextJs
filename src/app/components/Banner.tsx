@@ -29,16 +29,16 @@ export default function Banner() {
                 {isMenuOpen && (
                     <Dropdown>
                         <ul>
-                            <li className='flex flex-col justify-center gap-2'><Image src={login} alt='ícone login'width={80}/><Link href={'/login'}>Login</Link></li>
+                            <li className='flex flex-col justify-center gap-2'><Image src={login} alt='ícone login'width={50}/><Link href={'/login'}>Login</Link></li>
                             <li className='flex flex-col justify-center items-center'><Image className='ml-2' src={cadastro} alt='ícone cadastro' width={50}/><Link href={'/cadastro'}>Cadastro</Link></li>
                         </ul>
                     </Dropdown>
                 )}
                 <Header>
                     <div className="menu-container" onClick={toggleMenu}>
-                        <Image src={menu} alt="Menu" width={50}/>
+                        <Image src={menu} alt="Menu" width={30}/>
                     </div>
-                    <Image src={logo} alt="Logo" className="logo" />
+                    <Image src={logo} alt="Logo" className="logo" width={200}/>
                 </Header>
             </div>
             <Section>

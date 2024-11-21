@@ -1,7 +1,7 @@
 "use client"
 import Image from 'next/image'
 import celular from '../../images/celular-mapa.png'
-import { DivText, PageMap, SectionPage } from './styles'
+import { DivText, PageMap, SectionPage, ImageWrapper } from './styles'
 
 export default function SectionMapa(){
     return(
@@ -12,9 +12,9 @@ export default function SectionMapa(){
                     <p className='text-[18px]'>Para facilitar o descarte de eletrônicos e eletrodomésticos, criamos pontos de coleta pela cidade</p>
                     <p className='text-[18px]'>Contribua para um futuro sustentável e ganhe recompensas ao descartar de forma consciente.</p>
                 </DivText>
-                <div className='mt-8'>
-                    <Image src={celular} alt='celular com mapa' height={500}/>
-                </div>
+                <ImageWrapper>
+                    <Image src={celular} alt='celular com mapa' height={500} />
+                </ImageWrapper>
             </SectionPage>
         </PageMap>
     )
