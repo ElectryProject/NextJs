@@ -1,7 +1,5 @@
-import Link from "next/link";
 import Banner from "./components/Banner";
 import SectionInform from "./components/SectionInform";
-import SectionParcerias from "./components/SectionMapa";
 import SectionMapa from "./components/SectionMapa";
 import SectionParceiros from "./components/SectionParceiros";
 import SectionDuvidas from "./components/SectionDuvidas";

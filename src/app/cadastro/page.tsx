@@ -1,7 +1,7 @@
 "use client";
 import seta from "../../images/seta.png";
 import React, { useState } from "react";
-import { Button, Container, Footer, Form, Input, Title } from "./styles";
+import { Container, Footer,  Title } from "./styles";
 import Link from "next/link";
 import Image from "next/image";
 import { useUser } from "@/context";
