@@ -7,6 +7,7 @@ import gustavo from '../../images/gustavo.png'
 import setinha from '../../images/setinha.png'
 import seta from '../../images/seta.png'
 import Link from "next/link";
+import Image from "next/image";
  
 const IntegrantesPage: React.FC = () => {
     const [openMenus, setOpenMenus] = useState<{ [key: number]: boolean }>({});
@@ -53,7 +54,7 @@ const IntegrantesPage: React.FC = () => {
                 <section className="grid grid-cols-1 md:grid-cols-3 gap-8">
                     {integrantes.map((integrante, index) => (
                         <div key={index} className="text-center">
-                            <img
+                            <Image
                                 src={integrante.imagem}
                                 alt={integrante.nome}
                                 className="w-80 h-auto mx-auto border-none p-2 object-contain"
@@ -63,7 +64,7 @@ const IntegrantesPage: React.FC = () => {
                                 onClick={() => toggleMenu(index)}
                                 className="mt-2 focus:outline-none"
                             >
-                                <img
+                                <Image
                                     src={setinha.src}
                                     alt="Seta"
                                     className={`w-6 h-6 transform ${openMenus[index] ? 'rotate-180' : 'rotate-0'} transition-all`}

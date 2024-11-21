@@ -1,5 +1,4 @@
 "use client";
-import React, { useState } from "react";
 import Image from "next/image";
 import seta from '../../images/seta.png'
 import geradores from '../../images/gerador-eolico.png'
