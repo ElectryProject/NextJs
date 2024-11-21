@@ -70,7 +70,7 @@ export default function GuiaEnergetico(){
                                 <strong>Small:</strong> Fones de ouvido, carregadores, controles
                                 remotos, pen drives.
                             </td>
-                            <td className="border border-[#E5B43B] px-4 py-2 text-center">350</td>
+                            <td className="border border-[#E5B43B] px-4 py-2 text-center">150</td>
                         </tr>
                         <tr className="bg-gray-50">
                             <td className="border border-[#E5B43B] px-4 py-2">
@@ -85,14 +85,14 @@ export default function GuiaEnergetico(){
                                 <strong>Big:</strong> Monitores, laptops, impressoras, TVs
                                 pequenas.
                             </td>
-                            <td className="border border-[#E5B43B] px-4 py-2 text-center">1500</td>
+                            <td className="border border-[#E5B43B] px-4 py-2 text-center">4000</td>
                         </tr>
                         <tr className="bg-gray-50">
                             <td className="border border-[#E5B43B] px-4 py-2">
                                 <strong>Bigger:</strong> TVs grandes, geladeiras, máquinas de
                                 lavar, fogões.
                             </td>
-                            <td className="border border-[#E5B43B] px-4 py-2 text-center">4500</td>
+                            <td className="border border-[#E5B43B] px-4 py-2 text-center">5000</td>
                         </tr>
                     </tbody>
                 </table>

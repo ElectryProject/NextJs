@@ -20,16 +20,16 @@ import Header from "./components/Header";
  
 const Page: React.FC = () => {
     const produtos = [
-        { id: 1, titulo: "Geradores Eólicos Domésticos", pontos: 50, img: geradores },
-        { id: 2, titulo: "Lâmpada LED Solar", pontos: 50, img: lampadaSolar },
-        { id: 3, titulo: "Armazenador de Bateria Solar", pontos: 50, img: armazenadorBateria },
-        { id: 4, titulo: "Tomada Inteligente", pontos: 30, img: tomadaInteligente },
-        { id: 5, titulo: "Cooler Ecológico", pontos: 40, img: cooler },
-        { id: 6, titulo: "Purificador De Água Solar", pontos: 20, img: purificador },
-        { id: 7, titulo: "Carregador Solar Portátil", pontos: 25, img: carregadorSolar },
-        { id: 8, titulo: "Aquecedor De Água Solar", pontos: 60, img: aquecedor },
-        { id: 9, titulo: "Placa Solar Doméstica", pontos: 100, img: placaSolar },
-        { id: 10, titulo: "Ar Condicionado Solar", pontos: 150, img: arCondicionado },
+        { id: 1, titulo: "Geradores Eólicos Domésticos", pontos: 4500, img: geradores },
+        { id: 2, titulo: "Lâmpada LED Solar", pontos: 700, img: lampadaSolar },
+        { id: 3, titulo: "Armazenador de Bateria Solar", pontos: 400, img: armazenadorBateria },
+        { id: 4, titulo: "Tomada Inteligente", pontos: 500, img: tomadaInteligente },
+        { id: 5, titulo: "Cooler Ecológico", pontos: 2500, img: cooler },
+        { id: 6, titulo: "Purificador De Água Solar", pontos: 150, img: purificador },
+        { id: 7, titulo: "Carregador Solar Portátil", pontos: 100, img: carregadorSolar },
+        { id: 8, titulo: "Aquecedor De Água Solar", pontos: 600, img: aquecedor },
+        { id: 9, titulo: "Placa Solar Doméstica", pontos: 2500, img: placaSolar },
+        { id: 10, titulo: "Ar Condicionado Solar", pontos: 10000, img: arCondicionado },
     ];
  
     const settings = {
