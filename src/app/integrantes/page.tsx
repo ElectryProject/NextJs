@@ -54,8 +54,10 @@ const IntegrantesPage: React.FC = () => {
                 <section className="grid grid-cols-1 md:grid-cols-3 gap-8">
                     {integrantes.map((integrante, index) => (
                         <div key={index} className="text-center">
-                            <img
+                            <Image
                                 src={integrante.imagem}
+                                width={150}
+                                height={150}
                                 alt={integrante.nome}
                                 className="w-80 h-auto mx-auto border-none p-2 object-contain"
                             />
