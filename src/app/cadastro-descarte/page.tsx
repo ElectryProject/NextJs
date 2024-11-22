@@ -11,7 +11,7 @@ const Page: React.FC = () => {
   const [produto, setProduto] = useState("");
   const [data, setData] = useState("");
   const [localizacao, setLocalizacao] = useState("");
-  const [sucesso, setSucesso] = useState(false); // Estado para controlar o banner
+  const [sucesso, setSucesso] = useState(false); 
 
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -59,8 +59,8 @@ const Page: React.FC = () => {
         return;
       }
 
-      setSucesso(true); // Mostrar o banner
-      setTimeout(() => setSucesso(false), 5000); // Ocultar após 5 segundos
+      setSucesso(true);
+      setTimeout(() => setSucesso(false), 5000);
 
       setDescarteAgenda((prev) => [...prev, { produto, data, localizacao }]);
       setProduto("");

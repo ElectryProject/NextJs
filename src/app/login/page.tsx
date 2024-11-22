@@ -27,7 +27,7 @@ export default function Login() {
     }
 
     try {
-      // Passo 1: Verificar login
+      //  Verificação de login
       const verifyResponse = await fetch(
         `http://localhost:8080/Java_Electry2_war/api/usuario/verificar?nome=${inputName}&senha=${inputPassword}`,
         {
@@ -42,7 +42,7 @@ export default function Login() {
         return;
       }
 
-      // Passo 2: Armazenar token de login
+      // Armazenação de login
       const tokenResponse = await fetch(
         "http://localhost:8080/Java_Electry2_war/api/login",
         {
@@ -69,7 +69,7 @@ export default function Login() {
       setSuccess("Login realizado com sucesso! Redirecionando...");
       setTimeout(() => {
         router.push("/guia-energetico");
-      }, 3000); // 3 segundos
+      }, 3000); 
     } catch (err) {
       console.error("Erro durante a comunicação com o servidor:", err);
       setError("Erro ao se comunicar com o servidor.");

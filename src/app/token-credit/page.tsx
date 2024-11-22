@@ -24,12 +24,12 @@ export default function TokenPage() {
       return;
     }
 
-    // Verifica se o token já existe
+    
     const storedToken = userToken || localStorage.getItem("userToken");
     if (storedToken) {
       setTokenState(storedToken);
     } else {
-      // Solicita um novo token da API Flask
+     
       fetch(API_FLASK_URL, {
         method: "POST",
         headers: {
