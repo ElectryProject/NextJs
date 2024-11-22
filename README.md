@@ -7,9 +7,9 @@
 #### A Electry desenvolve um sistema para gestão de resíduos eletrônicos, com pontos de coleta para descarte correto e reciclagem de materiais valiosos, como ouro e cobre. Os recursos gerados financiam projetos de energia renovável, enquanto os usuários acumulam pontos por descarte, incentivando práticas sustentáveis e a transição energética.
 
 ### Configurações da aplicação:
-### - API JAVA RESTFUL para a armazenação e validação de páginas de Cadastro e Login.
-### - API FLASK PYTHON para geração de Token de acesso único ao usuário
-### - API INTEGRAÇÃO GOOGLE MY MAPS para visualização de localizações dos Pontos de Coleta Electry
+#### - API JAVA RESTFUL para a armazenação e validação de páginas de Cadastro e Login.
+#### - API FLASK PYTHON para geração de Token de acesso único ao usuário
+#### - API INTEGRAÇÃO GOOGLE MY MAPS para visualização de localizações dos Pontos de Coleta Electry
 
 ### Como utilizar o site:
 #### 1° Realize seu cadastro pessoal com dados básicos - menores de idade não têm acesso ao sistema
