@@ -4,8 +4,6 @@ import React, { useState } from "react";
 import laura from '../../images/laura.png'
 import gabriela from '../../images/gabriela.png'
 import gustavo from '../../images/gustavo.png'
-import logo from '../../images/logo (2).png'
-import dinheiro from '../../images/moedas.png'
 import setinha from '../../images/setinha.png'
 import seta from '../../images/seta.png'
 import Image from "next/image";
