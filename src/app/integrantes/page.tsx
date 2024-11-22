@@ -1,12 +1,13 @@
 "use client";
-
+ 
 import React, { useState } from "react";
 import laura from '../../images/laura.png'
 import gabriela from '../../images/gabriela.png'
 import gustavo from '../../images/gustavo.png'
+import logo from '../../images/logo (2).png'
+import dinheiro from '../../images/moedas.png'
 import setinha from '../../images/setinha.png'
 import seta from '../../images/seta.png'
-import Link from "next/link";
 import Image from "next/image";
  
 const IntegrantesPage: React.FC = () => {
@@ -24,7 +25,7 @@ const IntegrantesPage: React.FC = () => {
             nome: "Gabriela De Sousa Reis",
             imagem: gabriela.src,
             rm: "558830",
-            turma: "1TDSPJ",
+            curso: "1TDSPJ",
             github: "https://github.com/gabisreis7",
             linkedin: "https://www.linkedin.com/in/gabriela-de-sousa-reis-00935b237/",
         },
@@ -32,7 +33,7 @@ const IntegrantesPage: React.FC = () => {
             nome: "Laura Amadeu",
             imagem: laura.src,
             rm: "556690",
-            turma: "1TDSPJ",
+            curso: "1TDSPJ",
             github: "https://github.com/lauraamadeu10",
             linkedin: "https://www.linkedin.com/in/laura-amadeu-0995a22b6/",
         },
@@ -40,21 +41,20 @@ const IntegrantesPage: React.FC = () => {
             nome: "Gustavo Lazzuri",
             imagem: gustavo.src,
             rm: "556772",
-            turma: "1TDSPI",
+            curso: "1TDSPI",
             github: "https://github.com/guLazzuri",
             linkedin: "https://br.linkedin.com/in/gustavolazzuri",
         },
     ];
  
     return (
-        <div className="min-h-screen bg-yellow-100 gap-8 flex flex-col font-lato text-black">
-            <h1 className="text-3xl font-bold text-center flex justify-center mt-8">Integrantes</h1>
- 
+        <div className="min-h-screen bg-yellow-100 flex flex-col font-lato text-black">
+            
             <main className="p-8 flex-1">
                 <section className="grid grid-cols-1 md:grid-cols-3 gap-8">
                     {integrantes.map((integrante, index) => (
                         <div key={index} className="text-center">
-                            <Image
+                            <img
                                 src={integrante.imagem}
                                 alt={integrante.nome}
                                 className="w-80 h-auto mx-auto border-none p-2 object-contain"
@@ -67,6 +67,8 @@ const IntegrantesPage: React.FC = () => {
                                 <Image
                                     src={setinha.src}
                                     alt="Seta"
+                                    width={150}
+                                    height={150}
                                     className={`w-6 h-6 transform ${openMenus[index] ? 'rotate-180' : 'rotate-0'} transition-all`}
                                 />
                             </button>
@@ -76,7 +78,7 @@ const IntegrantesPage: React.FC = () => {
                                         <strong>RM:</strong> {integrante.rm}
                                     </p>
                                     <p>
-                                        <strong>Turma:</strong> {integrante.turma}
+                                        <strong>Curso:</strong> {integrante.curso}
                                     </p>
                                     <div className="flex gap-4 mt-2">
                                         <a
@@ -104,7 +106,12 @@ const IntegrantesPage: React.FC = () => {
             </main>
  
             <footer className="relative p-4">
-                <Link href={'/'}><img src={seta.src} alt="Seta para voltar" className="absolute bottom-4 left-4 w-6 h-6 cursor-pointer"/></Link>
+                <img
+                    src={seta.src}
+                    alt="Seta para voltar"
+                    className="absolute bottom-4 left-4 w-6 h-6 cursor-pointer"
+                    onClick={() => window.history.back()}
+                />
             </footer>
         </div>
     );
