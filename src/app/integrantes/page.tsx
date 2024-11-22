@@ -108,9 +108,11 @@ const IntegrantesPage: React.FC = () => {
             </main>
  
             <footer className="relative p-4">
-                <img
+                <Image
                     src={seta.src}
                     alt="Seta para voltar"
+                    width={50}
+                    height={50}
                     className="absolute bottom-4 left-4 w-6 h-6 cursor-pointer"
                     onClick={() => window.history.back()}
                 />
